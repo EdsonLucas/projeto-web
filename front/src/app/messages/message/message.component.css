@@ -1,0 +1,118 @@
+.messages {
+  overflow-y: scroll;
+  height: 700px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.userMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 30%;
+}
+
+.userMessage img {
+  width: 35px;
+  border-radius: 10px;
+  margin-right: 20px;
+  margin-top: -30px;
+}
+
+.userContent {
+  width: 100%;
+}
+
+.chat_date {
+  font-size: 12px;
+}
+
+.titleContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleContent #user {
+  font-size: 19px;
+}
+
+.metadata {
+  font-weight: 300;
+  padding: 0 0 0 7px;
+  margin-bottom: 0px;
+  color: #ffffff;
+}
+
+.messageContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  background-color: #454556;
+  border: 1px solid #454556;
+  padding: 4px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.messageContent::before {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0px 13px 20px 0;
+  border-color: transparent #454556 transparent transparent;
+  margin-top: -5px;
+  margin-left: -17px;
+}
+
+.text {
+  color: #ffffff;
+  font-weight: bold;
+  clear: both;
+  line-height: 18px;
+  font-size: 15px;
+  margin: 8px 0 8px 5px;
+  max-width: 85%;
+  word-wrap: break-word;
+}
+
+.buttonContainer {
+  margin-left: 20px;
+  margin-top: 20px;
+  transition: all 2s ease-in;
+}
+
+.buttonContainer .msg_edit_btn {
+  background: #3fb73f none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  width: 33px;
+  margin-right: 20px;
+}
+
+.buttonContainer .msg_delete_btn {
+  background: #FA5858 none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  width: 33px;
+}

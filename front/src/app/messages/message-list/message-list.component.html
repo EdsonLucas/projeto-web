@@ -1,0 +1,50 @@
+<div class="body">
+  <!--<img src="assets/img/logo.png" width="200" alt="HomeChat" />-->
+
+  <div class="bodyContainer">
+    <div>
+      <div class="lateralMenu">
+        <img src="assets/img/single_user.jpg" width="83" height="83" alt="Usuário" />
+
+        <h2>Bruno bobo</h2>
+        <span>bruno.bonadiman@gmail.com</span>
+
+        <ul class="menu">
+          <li>
+            <a [routerLink]="['/mensagens']">
+              <i class="fa fa-comment-o" style="font-size: 17px" aria-hidden="true"></i>
+              <p>Mensagens</p>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/userprofile']">
+              <i class="fa fa-user-o" style="font-size: 17px" aria-hidden="true"></i>
+              <p>Meu Perfil</p>
+            </a>
+          </li>
+          <li>
+            <a href="#" (click)="onLogout()">
+              <i class="fa fa-sign-out logout-icon" style="font-size: 17px" aria-hidden="true"></i>
+              <p class="logout">Sair</p>
+            </a>
+          </li>
+        </ul>
+
+        <p class="version">Versão 1.0</p>
+      </div>
+
+      <iframe style="margin-top: 40px" width="100%" height="320" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/43116194&color=%233e1929&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
+    </div>
+
+    <div class="chat">
+
+      <div class="inbox_msg">
+        <app-message [messages]="messages"></app-message>
+
+        <app-message-input></app-message-input>
+      </div>
+
+    </div>
+  </div>
+</div>

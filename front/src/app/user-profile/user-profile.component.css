@@ -1,0 +1,16 @@
+img{
+  width: 200px;
+  margin-left:40%;
+  border-radius: 100px;
+}
+
+.card{
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  margin-top: 10px;
+}
+
+#info{
+  margin-left: 39%;
+}
+

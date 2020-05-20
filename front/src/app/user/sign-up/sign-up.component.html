@@ -1,0 +1,44 @@
+<h2>Registrar</h2>
+
+<form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+  <p>Nome Completo</p>
+  <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName"
+    required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
+  <div class="validation" *ngIf="signUpForm.submitted && !fullName.valid">
+    <label *ngIf="email.errors.required" class="validation-message">Este campo é obrigatório.</label>
+  </div>
+
+  <p>E-mail</p>
+  <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email"
+    required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+  <div class="validation" *ngIf="signUpForm.submitted && email.errors">
+    <label *ngIf="email.errors.required" class="validation-message">Este campo é obrigatório.</label>
+    <label *ngIf="email.errors.pattern" class="validation-message">Endereço de email inválido.</label>
+  </div>
+
+  <p>Senha</p>
+  <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password"
+     minlength="4" required
+    [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
+  <div class="validation" *ngIf="signUpForm.submitted && password.errors">
+    <label *ngIf="password.errors.required" class="validation-message">Este campo é obrigatório.</label>
+    <label *ngIf="password.errors.minlength" class="validation-message">Digite pelo menos 4 caracteres.</label>
+  </div>
+
+  <div class="center">
+    <span>
+      Já possui conta?
+      <a routerLink="/login" routerLinkActive="active">Clique aqui!</a>
+    </span>
+  </div>
+
+  <input type="submit" value="Cadastrar">
+</form>
+
+<div class="success" *ngIf="showSucessMessage">
+  Usuário cadastrado com sucesso!
+</div>
+
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>

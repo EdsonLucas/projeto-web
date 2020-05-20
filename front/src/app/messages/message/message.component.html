@@ -1,0 +1,35 @@
+<div class="messages">
+  <div class="message" *ngFor="let item of messages">
+    <div class="userMessage">
+      <img src="assets/img/single_user.jpg" />
+
+      <div class="userContent">
+        <div class="titleContent">
+          <strong id="user">{{ item.username }}</strong>
+          <span class="chat_date">
+            <i>{{ item.createdAt | date:'dd/MM/yyyy' }}</i>
+          </span>
+        </div>
+
+        <div class="messageContent">
+          <p class="text">
+            {{ item.content }}
+          </p>
+          <span class="metadata">
+            <i>{{ item.createdAt | date:'HH:mm' }}</i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttonContainer">
+      <button class="msg_edit_btn" type="button" data-toggle="tooltip" data-placement="top" title="Editar" (click)="onEditService(item.messageId)" id="edit">
+        <i class="fa fa-pencil-square-o"></i>
+      </button>
+      <button class="msg_delete_btn" type="button" data-toggle="tooltip" data-placement="top" title="Deletar"
+        (click)="onDeleteService(item.messageId)" id="delete">
+        <i class="fa fa-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div id="circularMenu" class="circular-menu">
+
+  <a class="floating-btn" onclick="document.getElementById('circularMenu').classList.toggle('active');">
+    <i class="fa fa-plus"></i>
+  </a>
+
+  <menu class="items-wrapper">
+    <a href="https://pt-br.facebook.com/" class="menu-item fa fa-facebook"></a>
+    <a href="https://twitter.com/login?lang=pt" class="menu-item fa fa-twitter"></a>
+    <a href="https://www.instagram.com/?hl=pt-br" class="menu-item fa fa-instagram"></a>
+    <a href="https://br.linkedin.com/" class="menu-item fa fa-linkedin"></a>
+  </menu>
+
+</div>
+
+
+<div id="circularMenu1" class="circular-menu circular-menu-left active">
+
+  <a class="floating-btn" onclick="document.getElementById('circularMenu1').classList.toggle('active');">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <menu class="items-wrapper" routerLinkActive="active">
+    <a href="#" class="menu-item fa fa-home" data-toggle="tooltip" data-placement="top" title="Home"
+      [routerLink]="['/home']"></a>
+    <a href="#" class="menu-item fa fa-envelope" data-toggle="tooltip" data-placement="top" title="Mensagens"
+      [routerLink]="['/mensagens']"></a>
+    <a href="#" class="menu-item fa fa-user-o" data-toggle="tooltip" data-placement="top" title="Perfil" [routerLink]="['/userprofile']"></a>
+    <a href="#" class="menu-item fa fa-reply" data-toggle="tooltip" data-placement="right" title="Sair" (click)="onLogout()"></a>
+  </menu>
+
+</div>

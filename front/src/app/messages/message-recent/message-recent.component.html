@@ -1,0 +1,21 @@
+<div class="inbox_people">
+  <div class="headind_srch">
+    <div class="recent_heading">
+      <h4>Mensagens Recentes</h4>
+    </div>
+  </div>
+  <div class="inbox_chat">
+    <div class="chat_list active_chat" *ngFor="let item of messages;">
+      <div class="chat_people">
+        <div class="chat_img">
+          <img src="https://dwpdobr8xeaso.cloudfront.net/wgvs-images/avatars/profile_llama@4x.png" alt="sunil">
+        </div>
+        <div class="chat_ib">
+          <h5><strong>{{ item.username }}</strong>
+            <span class="chat_date"><i>{{today | date:'dd/MM/yyyy'}}</i></span></h5>
+          <p>{{ item.content }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

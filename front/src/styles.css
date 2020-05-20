@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Circular Std";
+  src: url('assets/fonts/CircularStd-Book.otf') format('otf'),
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+body, input, button {
+  font-family: 'Circular Std', 'Roboto', sans-serif;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body, input, button {
+  color: #454556;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+button {
+  cursor: pointer;
+  outline: none
+}
+
+h1 {
+  font-size: 40px
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 17px
+}
+
+p {
+  font-weight: 300;
+}
+
+a:focus,
+button:focus,
+a:active,
+button:active,
+a:visited,
+button:visited {
+  outline: none;
+  border: none;
+}

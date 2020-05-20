@@ -1,0 +1,44 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding-bottom: 40px;
+}
+
+form input[type="text"] {
+  width: 90%;
+  padding: 20px;
+  border: 2px solid #C3C6DB;
+  border-radius: 13px;
+  margin-left: -20px;
+}
+
+form .buttonContainer {
+  position: relative;
+  margin-left: -100px;
+}
+
+form .buttonContainer .msg_send_btn {
+  background: #0174DF none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  width: 33px;
+  margin-right: 20px;
+}
+
+form .buttonContainer .msg_cancel_btn {
+  background: #FA5858 none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  width: 33px;
+}

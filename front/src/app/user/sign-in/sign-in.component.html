@@ -1,0 +1,37 @@
+<img src="/assets/img/logo-v2.png" />
+
+<form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+  <p>E-mail</p>
+  <input type="email" name="email" #email="ngModel" [(ngModel)]="model.email"
+    required [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+  <div class="validation" *ngIf="signInForm.submitted && password.errors">
+    <label *ngIf="password.errors.required" class="validation-message">Este campo é obrigatório.</label>
+  </div>
+  <div class="validation" *ngIf="signInForm.submitted && email.errors?.pattern">
+    <label class="validation-message">Endereço de email invalido.</label>
+  </div>
+
+  <p>Senha</p>
+  <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password"
+  required minlength="4" [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+  <div class="validation" *ngIf="signInForm.submitted && password.errors">
+    <label *ngIf="password.errors.required" class="validation-message">Este campo é obrigatório.</label>
+  </div>
+  <div class="validation" *ngIf="signInForm.submitted && password.errors?.minlength">
+    <label class="validation-message">Mínimo de 4 caracteres.</label>
+  </div>
+
+  <div class="center">
+    <span>
+      Não possui conta?
+      <a routerLink="/signup" routerLinkActive="active">Crie aqui!</a>
+    </span>
+  </div>
+
+  <input type="submit" value="Entrar">
+
+</form>
+
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>

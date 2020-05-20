@@ -1,0 +1,12 @@
+  <app-header></app-header>
+  <div class="container">
+    <div class="card">
+      <img src="https://lh3.googleusercontent.com/p7rx-TDw8mSXmnN5oreMbOrC6FTumoRsnz8rDxUHL6-7xYtLlzcyj1GS8UKyBx5eJg">
+      <div class="card-body">
+        <div class="media-body mb-5 text-white" id="info" *ngIf="userDetails">
+          <h4 class="mt-0 mb-0">{{userDetails.fullName}}</h4>
+          <p class="small mb-4"> <i class="fa fa-envelope mr-2"></i>{{userDetails.email}}</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="Sair" (click)="onLogout()">Sair</button>
+      </div>
+    </div>

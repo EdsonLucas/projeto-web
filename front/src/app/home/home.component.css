@@ -1,0 +1,20 @@
+.container {
+  align-items: center;
+  margin-top: 25px;
+}
+
+h1 {
+  margin-left: 20%;
+}
+
+h4 {
+  margin-left: 35%;
+}
+
+img {
+  align-items: center;
+  width: 40%;
+  height: 80s;
+  margin-left: 32%;
+  margin-top: -15px;
+}
