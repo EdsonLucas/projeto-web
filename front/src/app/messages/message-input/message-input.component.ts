@@ -22,7 +22,7 @@ export class MessageInputComponent implements OnInit {
       );
       this.messageLoad = null;
     } else {
-      const messageAux = new Message(form.value.myContentngForm, '');
+      const messageAux = new Message(form.value.myContentngForm, '', '', '');
       this.messageService.addMessage(messageAux).subscribe(
         (dadosSucesso) => console.log(dadosSucesso),
         (dadosErro) => console.log(dadosErro)
@@ -31,7 +31,7 @@ export class MessageInputComponent implements OnInit {
     }
   }
   onSave(textCosole: string) {
-    const messageAux = new Message(textCosole, '');
+    const messageAux = new Message(textCosole, '', '', '');
     this.messageService.addMessage(messageAux);
   }
   ngOnInit() {

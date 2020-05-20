@@ -12,11 +12,11 @@ export class MessageComponent {
   today = Date.now();
   fixedTimezone = this.today;
 
-  @Input() messages: Message = new Message('', '');
+  @Input() messages: Message = new Message('', '', '', '');
   @Output() editClicked_Message = new EventEmitter<string>();
 
   onEditService(messageId) {
-    this.messageService.editMessage(this.messages, messageId);
+    this.messageService.editMessage(messageId);
   }
 
   onDeleteService(messageId) {

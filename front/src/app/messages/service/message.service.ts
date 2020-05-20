@@ -12,7 +12,7 @@ import { UserService } from '../../shared/user.service';
 })
 export class MessageService {
   private messageService: Message[] = [];
-  messageIsEdit = new EventEmitter<Message>();
+  messageIsEdit = new EventEmitter<any>();
 
   constructor(private http: Http) {}
 
@@ -81,7 +81,7 @@ export class MessageService {
       );
   }
 
-  editMessage(message: Message, messageId: string) {
+  editMessage(messageId: string) {
     const selectedMessage = this.messageService.filter(messageService => messageService.messageId === messageId);
 
     this.messageIsEdit.emit(selectedMessage);
