@@ -3,16 +3,16 @@ export class Message {
   messageId: string;
   username?: string;
   userId?: string;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
 
   constructor(
     content: string,
     messageId: string,
+    createdAt: string,
+    updatedAt: string,
     username?: string,
     userId?: string,
-    createdAt?: string,
-    updatedAt?: string,
   ) {
     this.content = content;
     this.messageId = messageId;

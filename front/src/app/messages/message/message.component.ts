@@ -16,7 +16,7 @@ export class MessageComponent {
   @Output() editClicked_Message = new EventEmitter<string>();
 
   onEditService(messageId) {
-    this.messageService.editMessage(messageId);
+    this.messageService.editMessage(this.messages, messageId);
   }
 
   onDeleteService(messageId) {

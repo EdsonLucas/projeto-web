@@ -12,7 +12,14 @@ import { Router } from '@angular/router';
 export class MessageListComponent implements OnInit {
   messages: Message[] = [];
 
-  constructor(private userService: UserService, private router: Router, private messageService: MessageService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
+
+  userDetails;
+
 
   ngOnInit(): void {
     this.messageService.getMessages().subscribe(
@@ -23,6 +30,15 @@ export class MessageListComponent implements OnInit {
       (dadosErro) => {
         console.log('error get messages');
         console.log(dadosErro);
+      }
+    );
+
+    this.userService.getUserProfile().subscribe(
+      (res) => {
+        this.userDetails = res['user'];
+      },
+      (err) => {
+        console.log(err);
       }
     );
   }

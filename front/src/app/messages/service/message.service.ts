@@ -81,7 +81,7 @@ export class MessageService {
       );
   }
 
-  editMessage(messageId: string) {
+  editMessage(message: Message, messageId: string) {
     const selectedMessage = this.messageService.filter(messageService => messageService.messageId === messageId);
 
     this.messageIsEdit.emit(selectedMessage);

@@ -1,3 +1,4 @@
+import { AlertsService } from './toastr/toastr.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -54,7 +55,8 @@ import { MessageService } from './messages/service/message.service';
     },
     AuthGuard,
     UserService,
-    MessageService
+    MessageService,
+    AlertsService
   ],
   bootstrap: [AppComponent],
 })

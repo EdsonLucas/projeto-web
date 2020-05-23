@@ -3,11 +3,11 @@
 
   <div class="bodyContainer">
     <div>
-      <div class="lateralMenu">
-        <img src="assets/img/single_user.jpg" width="83" height="83" alt="Usuário" />
+      <div class="lateralMenu" *ngIf="userDetails">
+        <img src="assets/img/Eu.jpg" width="83" height="83" alt="Usuário" />
 
-        <h2>Bruno bobo</h2>
-        <span>bruno.bonadiman@gmail.com</span>
+        <h3>{{userDetails.fullName}}</h3>
+        <span>{{userDetails.email}}</span>
 
         <ul class="menu">
           <li>
