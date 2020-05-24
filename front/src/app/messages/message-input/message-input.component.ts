@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from './../service/message.service';
 import { Message } from './../model/message.model';
 import { NgForm } from '@angular/forms';
+import { User } from 'src/app/shared/user.model';
 
 @Component({
   selector: 'app-message-input',
@@ -10,6 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class MessageInputComponent implements OnInit {
   constructor(private messageService: MessageService) {}
+  user: User;
 
   messageLoad: Message;
 
@@ -22,7 +24,7 @@ export class MessageInputComponent implements OnInit {
       );
       this.messageLoad = null;
     } else {
-      const messageAux = new Message(form.value.myContentngForm, '', '', '');
+      const messageAux = new Message(form.value.myContentngForm, '', this.user, '', '', '', '');
       this.messageService.addMessage(messageAux).subscribe(
         (dadosSucesso) => console.log(dadosSucesso),
         (dadosErro) => console.log(dadosErro)
@@ -30,8 +32,8 @@ export class MessageInputComponent implements OnInit {
       form.resetForm();
     }
   }
-  onSave(textCosole: string) {
-    const messageAux = new Message(textCosole, '', '', '');
+  onSave(textConsole: string) {
+    const messageAux = new Message(textConsole, '', this.user, '', '', '', '');
     this.messageService.addMessage(messageAux);
   }
   ngOnInit() {

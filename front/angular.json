@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "construcao-de-software-web"
+    }
+  },
+  "defaultProject": "construcao-de-software-web",
+  "cli": {
+    "analytics": "d865fa07-653d-45f6-aa6c-7cc8d6702ab3"
+  }
 }

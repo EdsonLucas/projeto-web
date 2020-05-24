@@ -1,6 +1,7 @@
 import { Message } from './../model/message.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MessageService } from '../service/message.service';
+import { User } from 'src/app/shared/user.model';
 
 @Component({
   selector: 'app-message',
@@ -9,10 +10,10 @@ import { MessageService } from '../service/message.service';
 })
 export class MessageComponent {
   constructor(private messageService: MessageService) {}
-  today = Date.now();
-  fixedTimezone = this.today;
 
-  @Input() messages: Message = new Message('', '', '', '');
+  user: User;
+
+  @Input() messages: Message = new Message('', '', this.user, '', '' , '', '');
   @Output() editClicked_Message = new EventEmitter<string>();
 
   onEditService(messageId) {

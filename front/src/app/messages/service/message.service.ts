@@ -5,7 +5,6 @@ import { environment } from '../../../environments/environment';
 import 'rxjs-compat/Rx';
 import 'rxjs-compat/operator/map';
 import { Observable } from 'rxjs-compat';
-import { UserService } from '../../shared/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +16,6 @@ export class MessageService {
   constructor(private http: Http) {}
 
   addMessage(message: Message) {
-    console.log('mensagem');
-    console.log(message);
     const bodyReq = JSON.stringify(message);
     const myHeaders = new Headers({ 'Content-Type': 'application/json' });
     return this.http
@@ -30,10 +27,11 @@ export class MessageService {
         const newObjMessage = new Message(
           aux.objMessageSave.content,
           aux.objMessageSave._id,
-          'Bruno',
-          null,
+          aux.objMessageSave.usuarioNome,
           aux.objMessageSave.createdAt,
-          aux.objMessageSave.updatedAt
+          aux.objMessageSave.updatedAt,
+          aux.objMessageSave.username,
+          null
         );
         this.messageService.push(newObjMessage);
         return newObjMessage;
@@ -53,7 +51,7 @@ export class MessageService {
 
         for (let msg of messageSResponseRecebida) {
           transformedCastMassagesModelFrontEnd.push(
-            new Message(msg.content, msg._id, 'Bruno', null, msg.createdAt, msg.updatedAt)
+            new Message(msg.content, msg._id,  msg.usuarioNome, msg.createdAt, msg.updatedAt, msg.username, null)
           );
         }
 
@@ -62,6 +60,8 @@ export class MessageService {
       })
       .catch((erroRecebido: Response) => Observable.throw(erroRecebido.json()));
   }
+
+
   updateMessage(message: Message) {
     const bodyReq = JSON.stringify(message[0]);
     const myHeaders = new Headers({ 'Content-Type': 'application/json' });

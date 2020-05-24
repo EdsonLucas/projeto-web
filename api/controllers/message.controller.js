@@ -18,10 +18,12 @@ module.exports.listarMensagens = (req, res, next) => {
 }
 
 module.exports.enviarMensagem = (req, res, next) => {
+    const UserId = res._id;
+    req.body.user = UserId;
     const message = new Message({
         content: req.body.content,
         user: req.body.user
-    });
+    });    
     message.save((err, result) => {
         if (err) {
             return res.status(500).json({

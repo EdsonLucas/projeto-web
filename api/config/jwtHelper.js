@@ -20,6 +20,8 @@ module.exports.verifyJwtToken = (req, res, next) => {
                     });
                 else {
                     req._id = decoded._id;
+                    res.locals.auth_data = decoded;
+                    req.decoded = decoded;
                     next();
                 }
             }
