@@ -1,12 +1,11 @@
 <div class="body">
-  <!--<img src="assets/img/logo.png" width="200" alt="HomeChat" />-->
 
   <div class="bodyContainer">
     <div>
       <div class="lateralMenu" *ngIf="userDetails">
-        <img src="assets/img/Eu.jpg" width="83" height="83" alt="Usuário" />
+        <img src={{info.avatar_url}} width="83" height="83" alt="Usuário" />
 
-        <h3>{{userDetails.fullName}}</h3>
+        <h3>{{info.name}}</h3>
         <span>{{userDetails.email}}</span>
 
         <ul class="menu">

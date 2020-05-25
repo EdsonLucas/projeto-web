@@ -21,10 +21,10 @@
 }
 
 .userMessage img {
-  width: 35px;
+  width: 50px;
   border-radius: 10px;
   margin-right: 20px;
-  margin-top: -30px;
+  margin-top: -66px;
 }
 
 .userContent {
@@ -43,6 +43,7 @@
 
 .titleContent #user {
   font-size: 19px;
+  margin-right: 12px;
 }
 
 .metadata {
@@ -89,8 +90,12 @@
 }
 
 .buttonContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   transition: all 2s ease-in;
 }
 
@@ -103,7 +108,7 @@
   font-size: 17px;
   height: 33px;
   width: 33px;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .buttonContainer .msg_delete_btn {

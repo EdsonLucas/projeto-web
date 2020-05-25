@@ -23,6 +23,7 @@ import { MessageListComponent } from './messages/message-list/message-list.compo
 import { MessageInputComponent } from './messages/message-input/message-input.component';
 import { MessageRecentComponent } from './messages/message-recent/message-recent.component';
 import { MessageService } from './messages/service/message.service';
+import { GithubService } from './github/github.service';
 
 @NgModule({
   declarations: [
@@ -48,15 +49,15 @@ import { MessageService } from './messages/service/message.service';
     ReactiveFormsModule
   ],
   providers: [
+    UserService,
+    MessageService,
+    AlertsService,
+    GithubService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
     },
-    AuthGuard,
-    UserService,
-    MessageService,
-    AlertsService
   ],
   bootstrap: [AppComponent],
 })

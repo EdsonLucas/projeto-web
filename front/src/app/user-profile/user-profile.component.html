@@ -1,12 +1,11 @@
 <div class="body">
-  <!--<img src="assets/img/logo.png" width="200" alt="HomeChat" />-->
 
   <div class="bodyContainer">
     <div>
       <div class="lateralMenu" *ngIf="userDetails">
-        <img src="assets/img/Eu.jpg" width=" 83" height="83" alt="Usuário"/>
+        <img  src={{info.avatar_url}} width=" 83" height="83" alt="Usuário" />
 
-        <h3>{{userDetails.fullName}}</h3>
+        <h3>{{info.name}}</h3>
         <span>{{userDetails.email}}</span>
 
         <ul class="menu">
@@ -33,97 +32,63 @@
         <p class="version">Versão 1.0</p>
       </div>
 
-      <iframe style="margin-top: 40px" width="100%" height="320" scrolling="no" frameborder="no" allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/43116194&color=%233e1929&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-
     </div>
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
+    <div class="profile">
+      <div class="infoContainer">
+        <div class="info">
+          <h2>{{info.name}}</h2>
+          <p class="bio">
+            {{info.bio}}
+          </p>
+          <p>
+            <strong>Empresa: </strong>
+            {{info.company}}
+          </p>
+          <p>
+            <strong>E-mail: </strong>
+            {{userDetails.email}}
+          </p>
+          <p>
+            <strong>Blog:</strong>
+            {{info.blog}}
+          </p>
 
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-    <div class="container" *ngIf="userDetails">
-      <div class="row">
-        <div class="chat">
-          <div class="well profile">
-            <div class="col-sm-12">
-              <div class="col-xs-12 col-sm-8">
-                <h2>{{userDetails.fullName}}</h2>
-                <p><strong>Profissão: </strong> Programador Pleno </p>
-                <p><strong>Empresa: </strong> Autoglass </p>
-                <p><strong>E-mail: </strong> {{userDetails.email}}
-                </p>
-                <p><strong>Conhecimentos: </strong>
-                  <span class="tags">HTML5</span>
-                  <span class="tags">CSS3</span>
-                  <span class="tags">Jquery</span>
-                  <span class="tags">NodeJS</span>
-                  <span class="tags">Angular 9</span>
-                  <span class="tags">JavaScript</span>
-                  <span class="tags">C#</span>
-                </p>
-              </div>
-              <div class="col-xs-12 col-sm-4 text-center">
-                <figure>
-                  <img src="assets/img/Eu.jpg" alt="" class="img-circle img-responsive">
-                  <figcaption class="ratings">
-                    <p>Classificações:
-                      <a href="#">
-                        <span class="fa fa-star"></span>
-                      </a>
-                      <a href="#">
-                        <span class="fa fa-star"></span>
-                      </a>
-                      <a href="#">
-                        <span class="fa fa-star"></span>
-                      </a>
-                      <a href="#">
-                        <span class="fa fa-star"></span>
-                      </a>
-                      <a href="#">
-                        <span class="fa fa-star"></span>
-                      </a>
-                    </p>
-                  </figcaption>
-                </figure>
-              </div>
+          <div class="overview">
+            <div class="item">
+              <h2>
+                <strong>{{info.public_repos}}</strong>
+              </h2>
+              <p>
+                <small>Repositórios</small>
+              </p>
             </div>
-            <div class="col-xs-12 divider text-center">
-              <div class="col-xs-12 col-sm-4 emphasis">
-                <h2><strong> 20,7K </strong></h2>
-                <p><small>Seguidores</small></p>
-                <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Seguir </button>
-              </div>
-              <div class="col-xs-12 col-sm-4 emphasis">
-                <h2><strong>245</strong></h2>
-                <p><small>Seguindo</small></p>
-                <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Ver Perfil </button>
-              </div>
-              <div class="col-xs-12 col-sm-4 emphasis">
-                <h2><strong>43</strong></h2>
-                <p><small>Snippets</small></p>
-                <div class="btn-group dropup btn-block large">
-                  <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Opções </button>
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu text-left" role="menu">
-                    <li><a href="#"><span class="fa fa-envelope pull-right"></span> Envie um e-mail </a></li>
-                    <li><a href="#"><span class="fa fa-list pull-right"></span> Adicionar ou Remover da lista </a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><span class="fa fa-warning pull-right"></span>Reportar</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" class="btn disabled" role="button"> Deixar de Seguir </a></li>
-                  </ul>
-                </div>
-              </div>
+
+            <div class="item">
+              <h2>
+                <strong>{{info.public_gists}}</strong>
+              </h2>
+              <p>
+                <small>Gists</small>
+              </p>
+            </div>
+
+            <div class="item">
+              <h2>
+                <strong>{{info.followers}}</strong>
+              </h2>
+              <p>
+                <small>Seguidores</small>
+              </p>
             </div>
           </div>
         </div>
+
+        <div class="pictureContainer">
+          <img src={{info.avatar_url}} alt="Usuário">
+        </div>
       </div>
     </div>
+
   </div>
 </div>
