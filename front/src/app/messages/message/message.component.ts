@@ -1,47 +1,36 @@
 import { Message } from './../model/message.model';
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { MessageService } from '../service/message.service';
 import { UserService } from '../../shared/user.service';
 import { GithubService } from '../../github/github.service';
+import { User } from 'src/app/shared/user.model';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css'],
 })
-export class MessageComponent implements OnInit {
+export class MessageComponent {
   constructor(private messageService: MessageService, private userService: UserService, private githubService: GithubService) {}
-  today = Date.now();
-  fixedTimezone = this.today;
 
-  info: string;
-  userDetails;
+  messageEditId;
 
-  @Input() messages: Message = new Message('', '', '', '');
+  @Input() usersGithub;
+  @Input() user: any;
+  @Input() messages: Message[];
   @Output() editClicked_Message = new EventEmitter<string>();
 
-  ngOnInit(): void {
-    this.userService.getUserProfile().subscribe(
-      (res) => {
-        this.userDetails = res['user'];
-        var str = this.userDetails.fullName.indexOf(" ", this.userDetails.fullName.indexOf(" ") + 1);
-        var removeFullName = this.userDetails.fullName.substring(0, str);
-        var result = removeFullName.replace(/\s/g, '');
 
-        this.userDetails.fullName = removeFullName;
 
-        this.githubService.getData(result).subscribe((data) => {
-          this.info = data.avatar_url;
-        })
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+  onMessageHover(messageId: string) {
+    this.messageEditId = messageId;
+    setTimeout(() => {
+      this.messageEditId = null;
+    }, 5000);
   }
 
   onEditService(messageId) {
-    this.messageService.editMessage(this.messages, messageId);
+    this.messageService.editMessage(messageId);
   }
 
   onDeleteService(messageId) {

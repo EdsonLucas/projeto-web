@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { AuthInterceptor } from './auth/auth.interceptor';
+import { InterceptorService } from './auth/auth.interceptor';
 import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './shared/user.service';
 import { HeaderComponent } from './header/header.component';
@@ -55,7 +55,7 @@ import { GithubService } from './github/github.service';
     GithubService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: InterceptorService,
       multi: true,
     },
   ],

@@ -5,11 +5,8 @@ import { environment } from '../../../environments/environment';
 import 'rxjs-compat/Rx';
 import 'rxjs-compat/operator/map';
 import { Observable } from 'rxjs-compat';
-import { UserService } from '../../shared/user.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class MessageService {
   private messageService: Message[] = [];
   messageIsEdit = new EventEmitter<any>();
@@ -17,10 +14,9 @@ export class MessageService {
   constructor(private http: Http) {}
 
   addMessage(message: Message) {
-    console.log('mensagem');
     console.log(message);
     const bodyReq = JSON.stringify(message);
-    const myHeaders = new Headers({ 'Content-Type': 'application/json' });
+    const myHeaders = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     return this.http
       .post(environment.apiBaseUrlMessage + '/enviarMensagem', bodyReq, {
         headers: myHeaders,
@@ -30,8 +26,8 @@ export class MessageService {
         const newObjMessage = new Message(
           aux.objMessageSave.content,
           aux.objMessageSave._id,
-          'Bruno',
           null,
+          aux.objMessageSave.user,
           aux.objMessageSave.createdAt,
           aux.objMessageSave.updatedAt
         );
@@ -39,13 +35,14 @@ export class MessageService {
         return newObjMessage;
       })
       .catch((errorRecebido: Response) =>
-        Observable.throw(errorRecebido.json())
+        Observable.throw(errorRecebido)
       );
   }
 
   getMessages() {
+    const myHeaders = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     return this.http
-      .get(environment.apiBaseUrlMessage + '/listarMensagens')
+      .get(environment.apiBaseUrlMessage + '/listarMensagens', {headers: myHeaders})
       .map((resposeRecebida: Response) => {
         const responseEmJson = resposeRecebida.json();
         const messageSResponseRecebida = responseEmJson.objsMessageSRecuperados;
@@ -53,14 +50,14 @@ export class MessageService {
 
         for (let msg of messageSResponseRecebida) {
           transformedCastMassagesModelFrontEnd.push(
-            new Message(msg.content, msg._id, 'Bruno', null, msg.createdAt, msg.updatedAt)
+            new Message(msg.content, msg._id, msg.username, msg.user, msg.createdAt, msg.updatedAt)
           );
         }
 
         this.messageService = transformedCastMassagesModelFrontEnd;
         return transformedCastMassagesModelFrontEnd;
       })
-      .catch((erroRecebido: Response) => Observable.throw(erroRecebido.json()));
+      .catch((erroRecebido: Response) => Observable.throw(erroRecebido));
   }
   updateMessage(message: Message) {
     const bodyReq = JSON.stringify(message[0]);
@@ -81,7 +78,7 @@ export class MessageService {
       );
   }
 
-  editMessage(message: Message, messageId: string) {
+  editMessage(messageId: string) {
     const selectedMessage = this.messageService.filter(messageService => messageService.messageId === messageId);
 
     this.messageIsEdit.emit(selectedMessage);

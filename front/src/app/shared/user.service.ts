@@ -38,6 +38,10 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/userProfile');
   }
 
+  getUser(id: string) {
+    return this.http.get(environment.apiBaseUrl + '/' + id);
+  }
+
   //Helper Methods
 
   setToken(token: string) {

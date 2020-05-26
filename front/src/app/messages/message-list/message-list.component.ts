@@ -4,6 +4,7 @@ import { MessageService } from '../service/message.service';
 import { UserService } from '../../shared/user.service';
 import { Router } from '@angular/router';
 import { GithubService } from '../../github/github.service';
+import { User } from 'src/app/shared/user.model';
 
 @Component({
   selector: 'app-message-list',
@@ -14,6 +15,7 @@ export class MessageListComponent implements OnInit {
   messages: Message[] = [];
   userDetails;
   info = <any>[];
+  usersGithub = {};
 
   constructor(
     private userService: UserService,
@@ -24,16 +26,8 @@ export class MessageListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.messageService.getMessages().subscribe(
-      (dadosSucesso: Message[]) => {
-        this.messages = dadosSucesso;
-        console.log(dadosSucesso);
-      },
-      (dadosErro) => {
-        console.log('error get messages');
-        console.log(dadosErro);
-      }
-    );
+    this.CarregarMensagem()
+    setInterval(() => this.CarregarMensagem(), 1000);
 
     this.userService.getUserProfile().subscribe(
       (res) => {
@@ -51,6 +45,34 @@ export class MessageListComponent implements OnInit {
       },
       (err) => {
         console.log(err);
+      }
+    );
+  }
+
+  CarregarMensagem() {
+    this.messageService.getMessages().subscribe(
+      (dadosSucesso: Message[]) => {
+        dadosSucesso.filter(x => !this.messages.map(x => x.messageId).includes(x.messageId)).forEach(message => {
+          this.userService.getUser(message.userId).subscribe((user: any) => {
+            message.username = user.user.fullName.split(' ').splice(0, 2).join(' ');
+
+            this.githubService.getData(message.username.replace(' ', '')).subscribe((data) => {
+              this.usersGithub[message.userId] = data.avatar_url;
+            })
+
+            this.messages.push(message);
+            this.messages.sort((a, b) => {
+              if(a.createdAt.valueOf() < b.createdAt.valueOf()) {
+                return -1;
+              }
+
+              return 1
+            });
+          })
+        })
+      },
+      (dadosErro) => {
+        console.log(dadosErro);
       }
     );
   }

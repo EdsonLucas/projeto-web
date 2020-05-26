@@ -39,9 +39,9 @@
     <div class="chat">
 
       <div class="inbox_msg">
-        <app-message [messages]="messages"></app-message>
+        <app-message *ngIf="userDetails" [usersGithub]="usersGithub" [messages]="messages" [user]=userDetails></app-message>
 
-        <app-message-input></app-message-input>
+        <app-message-input [user]=userDetails></app-message-input>
       </div>
 
     </div>

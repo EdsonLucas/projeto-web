@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MessageService } from './../service/message.service';
 import { Message } from './../model/message.model';
 import { NgForm } from '@angular/forms';
+import { User } from 'src/app/shared/user.model';
 
 @Component({
   selector: 'app-message-input',
@@ -11,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class MessageInputComponent implements OnInit {
   constructor(private messageService: MessageService) {}
 
+  @Input() user: User;
   messageLoad: Message;
 
   onSubmit(form: NgForm) {

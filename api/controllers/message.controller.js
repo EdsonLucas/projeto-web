@@ -18,11 +18,15 @@ module.exports.listarMensagens = (req, res, next) => {
 }
 
 module.exports.enviarMensagem = (req, res, next) => {
+    const usuarioId = res.locals.auth_data._id;
+    req.body.user = usuarioId;
+
     const message = new Message({
         content: req.body.content,
         user: req.body.user
     });
     message.save((err, result) => {
+        console.log(result);
         if (err) {
             return res.status(500).json({
                 myErroTitle: 'Ocorreu um erro ao salvar a mensagem!',

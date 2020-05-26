@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class InterceptorService implements HttpInterceptor {
   constructor(private userService: UserService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
@@ -27,9 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
         tap(
           (event) => {},
           (err) => {
-            if (err.error.auth == false) {
               this.router.navigateByUrl('/login');
-            }
           }
         )
       );

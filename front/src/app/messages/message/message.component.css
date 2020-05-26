@@ -1,30 +1,46 @@
 .messages {
   overflow-y: scroll;
   height: 700px;
+  padding-right: 40px;
 }
 
 .message {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
 
   margin-left: 40px;
   margin-top: 40px;
 }
 
+.message.message-left {
+  justify-content: flex-start;
+}
+
+.message.message-right {
+  justify-content: flex-end;
+}
+
 .userMessage {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   min-width: 30%;
 }
 
+.reverse {
+  flex-direction: row-reverse;
+}
+
 .userMessage img {
-  width: 50px;
+  width: 60px;
   border-radius: 10px;
   margin-right: 20px;
-  margin-top: -66px;
+  margin-left: 20px;
+}
+
+.negativeImg {
+  margin-top: -40px;
 }
 
 .userContent {
@@ -58,24 +74,18 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
-  background-color: #454556;
-  border: 1px solid #454556;
   padding: 4px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
 }
 
-.messageContent::before {
-  position: absolute;
-  content: "";
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0px 13px 20px 0;
-  border-color: transparent #454556 transparent transparent;
-  margin-top: -5px;
-  margin-left: -17px;
+.messageContent.ballon-left {
+  background-color: #454556;
+  border: 1px solid #454556;
+}
+
+.messageContent.ballon-right {
+  background-color: #0f90ff;
+  border: 1px solid #0f90ff;
 }
 
 .text {

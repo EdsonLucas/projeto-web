@@ -34,7 +34,7 @@ module.exports.authenticate = (req, res, next) => {
 
 module.exports.userProfile = (req, res, next) => {
     User.findOne({
-            _id: req._id
+            _id: req.decoded._id
         },
         (err, user) => {
             if (!user)
@@ -45,8 +45,27 @@ module.exports.userProfile = (req, res, next) => {
             else
                 return res.status(200).json({
                     status: true,
-                    user: _.pick(user, ['fullName', 'email'])
+                    user: _.pick(user, ['_id', 'fullName', 'email'])
                 });
         }
     );
+}
+
+module.exports.getUser = (req, res, next) => {
+    User.findOne({
+        _id: req.params.id
+    },
+    (err, user) => {
+        if (!user)
+            return res.status(404).json({
+                status: false,
+                message: 'Registro de usuário não encontrado.'
+            });
+        else
+            return res.status(200).json({
+                status: true,
+                user: _.pick(user, ['fullName', 'email'])
+            });
+    }
+);
 }

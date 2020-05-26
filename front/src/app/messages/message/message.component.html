@@ -1,17 +1,17 @@
 <div class="messages">
-  <div class="message" *ngFor="let item of messages">
-    <div class="userMessage">
-      <img src={{info}} />
+  <div class="message" *ngFor="let item of messages" [ngClass]="{'message-left': user._id !== item.userId, 'message-right': user._id === item.userId}">
+    <div class="userMessage" (mouseover)="onMessageHover(item.messageId)" [ngClass]="{'reverse': user._id === item.userId}">
+      <img src={{usersGithub[item.userId]}} *ngIf="usersGithub[item.userId]" [ngClass]="{'negativeImg': messageEditId === item.messageId && item.userId === user._id}" />
 
       <div class="userContent">
         <div class="titleContent">
-          <strong id="user">{{ userDetails.fullName }}</strong>
+          <strong id="user">{{ item.username | uppercase }}</strong>
           <span class="chat_date">
             <i>{{ item.createdAt | date:'dd/MM/yyyy' }}</i>
           </span>
         </div>
 
-        <div class="messageContent">
+        <div class="messageContent" [ngClass]="{'ballon-left': user._id !== item.userId, 'ballon-right': user._id === item.userId}">
           <p class="text">
             {{ item.content }}
           </p>
@@ -20,7 +20,7 @@
           </span>
         </div>
 
-        <div class="buttonContainer">
+        <div class="buttonContainer" *ngIf="messageEditId === item.messageId && item.userId === user._id">
           <button class="msg_edit_btn" type="button" data-toggle="tooltip" data-placement="top" title="Editar" (click)="onEditService(item.messageId)" id="edit">
             <i class="fa fa-pencil-square-o"></i>
           </button>
